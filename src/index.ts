@@ -1,3 +1,4 @@
-function SomethingHere(_: string): number {
-    return 1
-}
+import * as gif from './gif/giphy'
+
+gif.getRandomGIF('excited')
+console.log('hello')
