@@ -1,0 +1,26 @@
+{
+  "name": "gif-email-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dest/index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "format": "prettier 'src/**/*.ts' 'tests/**/*.ts' --write",
+    "build": "tsc --p tsconfig.json",
+    "start": "npm run build && node .",
+    "test": "jest --verbose --coverage"
+  },
+  "keywords": [],
+  "author": "Shubham Chaturvedi",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.21",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1",
+    "ts-jest": "^26.4.4",
+    "typescript": "^4.1.3"
+  }
+}
