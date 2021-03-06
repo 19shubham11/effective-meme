@@ -5,7 +5,7 @@ interface GIPHYResponse {
 interface GIPHYData {
     type: string
     id: string
-    url: string
+    image_original_url: string
     title: string
 }
 
