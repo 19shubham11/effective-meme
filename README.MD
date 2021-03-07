@@ -8,6 +8,12 @@ This is a fun Node.js app written in TypeScript that sends an email of a random 
 
 I am currently using Mailjet API to send emails, however this can be further extended in the future to serve as a Twitter/Telegram bot as well, and not just limited to emails.
 
+For GIFs, I am using the GIPHY API.
+
+More details on the respective APIs and how to get the keys -
+- GIPHY - https://developers.giphy.com/docs/api#quick-start-guide
+- Mailjet - https://dev.mailjet.com/email/guides/getting-started/
+
 ## Possible future improvements
 - Use a database for emails - Currently it's just my email, however, if I want to spam my friends as well, `emails.json` file might not be the safest. 
 - Add API to add/remove emails.
