@@ -28,7 +28,7 @@ function getGIFEmailBody(gifURL: string): MailjetRequest {
         const req: MailjetEmailBody = {
             From: {
                 Email: config.email.email,
-                Name: 'GIF Of the Day',
+                Name: 'GIF Of The Day',
             },
             To: [
                 {
