@@ -9,7 +9,7 @@
   "scripts": {
     "format": "prettier 'src/**/*.ts' 'tests/**/*.ts' --write",
     "build": "tsc --p tsconfig.json",
-    "start": "npm run build && node .",
+    "start": "node .",
     "test": "jest --verbose --coverage"
   },
   "keywords": [],
