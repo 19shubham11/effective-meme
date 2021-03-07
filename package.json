@@ -2,7 +2,7 @@
   "name": "gif-email-bot",
   "version": "1.0.0",
   "description": "",
-  "main": "dest/index.js",
+  "main": "dest/main.js",
   "directories": {
     "test": "tests"
   },
