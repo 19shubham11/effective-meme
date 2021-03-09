@@ -1,4 +1,4 @@
-import addressees from './addresses.json'
+import addresses from './addresses.json'
 import config from '../config'
 import { MailjetEmailBody, MailjetRequest } from './model'
 import { v4 as uuid } from 'uuid'
@@ -24,7 +24,7 @@ async function sendEmail(gifURL: string): Promise<'OK'> {
 }
 
 function getGIFEmailBody(gifURL: string): MailjetRequest {
-    const messages = addressees.emails.map((mail) => {
+    const messages = addresses.emails.map((mail) => {
         const req: MailjetEmailBody = {
             From: {
                 Email: config.email.email,

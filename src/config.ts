@@ -12,12 +12,9 @@ interface MailjetConfig {
     key: string
 }
 
-const mailjetConfig: MailjetConfig = {
-    url: 'https://api.mailjet.com/v3.1/send',
-    email: process.env.MAILJET_EMAIL || '',
-    name: process.env.MAILJET_NAME || 'GIF Bot',
-    user: process.env.MAILJET_USER || '',
-    key: process.env.MAILJET_KEY || '',
+interface AppConfig {
+    gif: GiphyConfig
+    email: MailjetConfig
 }
 
 const giphyConfig: GiphyConfig = {
@@ -26,9 +23,12 @@ const giphyConfig: GiphyConfig = {
     apiKey: process.env.GIPHY_KEY || '',
 }
 
-interface AppConfig {
-    gif: GiphyConfig
-    email: MailjetConfig
+const mailjetConfig: MailjetConfig = {
+    url: 'https://api.mailjet.com/v3.1/send',
+    email: process.env.MAILJET_EMAIL || '',
+    name: process.env.MAILJET_NAME || 'GIF Bot',
+    user: process.env.MAILJET_USER || '',
+    key: process.env.MAILJET_KEY || '',
 }
 
 const config: AppConfig = {
