@@ -9,29 +9,31 @@ describe('GIPHY', () => {
     afterAll(nock.restore)
     afterEach(nock.cleanAll)
 
-    it('Should return a url when GIPHY returns 200', async () => {
-        const mockURL = 'https://mocked-gif-url'
-        const mockResp: GIPHYResponse = {
-            data: {
-                type: 'gif',
-                image_original_url: mockURL,
-                id: 'fdfdd',
-                title: 'Mock Gif!',
-            },
-        }
+    describe('getRandomGIF', () => {
+        it('Should return a url when GIPHY returns 200', async () => {
+            const mockURL = 'https://mocked-gif-url'
+            const mockResp: GIPHYResponse = {
+                data: {
+                    type: 'gif',
+                    image_original_url: mockURL,
+                    id: 'fdfdd',
+                    title: 'Mock Gif!',
+                },
+            }
 
-        nock(config.gif.baseURL).persist().get(config.gif.path).query(true).reply(200, mockResp)
+            nock(config.gif.baseURL).persist().get(config.gif.path).query(true).reply(200, mockResp)
 
-        const url = await gif.getRandomGIF('fun')
-        assert.strictEqual(url, mockURL)
-    })
+            const url = await gif.getRandomGIF('fun')
+            assert.strictEqual(url, mockURL)
+        })
 
-    it('Should throw an error when GIPHY does not return 200', async () => {
-        nock(config.gif.baseURL).persist().get(config.gif.path).query(true).reply(400)
+        it('Should throw an error when GIPHY does not return 200', async () => {
+            nock(config.gif.baseURL).persist().get(config.gif.path).query(true).reply(400)
 
-        await assert.rejects(gif.getRandomGIF('fun'), (err) => {
-            assert.match(err.message, /Giphy Error/)
-            return true
+            await assert.rejects(gif.getRandomGIF('fun'), (err) => {
+                assert.match(err.message, /Giphy Error/)
+                return true
+            })
         })
     })
 })
