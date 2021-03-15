@@ -10,13 +10,9 @@ async function getRandomGIF(tag: string): Promise<string> {
     })
 
     try {
-        const resp = await GET(`${config.gif.baseURL}${config.gif.path}?`, query) //url also from config
-        if (resp.statusCode === 200) {
-            const giphyRes = resp.body as GIPHYResponse
-            return giphyRes.data.image_original_url
-        } else {
-            throw new Error('Giphy Error!')
-        }
+        const resp = await GET(`${config.gif.baseURL}${config.gif.path}`, query)
+        const giphyRes = resp.body as GIPHYResponse
+        return giphyRes.data.image_original_url
     } catch (err) {
         throw new Error('Giphy Error!')
     }

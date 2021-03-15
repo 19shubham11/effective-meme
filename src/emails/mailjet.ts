@@ -12,12 +12,8 @@ async function sendEmail(gifURL: string): Promise<'OK'> {
     }
     const emailBody = getGIFEmailBody(gifURL)
     try {
-        const res = await POST(config.email.url, emailBody, headers)
-        if (res.statusCode === 200) {
-            return 'OK'
-        } else {
-            throw new Error('Mailjet Error!')
-        }
+        await POST(config.email.url, emailBody, headers)
+        return 'OK'
     } catch (err) {
         throw new Error('Mailjet Error!')
     }
