@@ -1,11 +1,12 @@
 interface GiphyConfig {
     baseURL: string
-    path: string
+    randomGIFPath: string
     apiKey: string
 }
 
 interface MailjetConfig {
-    url: string
+    baseURL: string
+    sendEmailPath: string
     email: string
     name: string
     user: string
@@ -19,12 +20,13 @@ interface AppConfig {
 
 const giphyConfig: GiphyConfig = {
     baseURL: 'https://api.giphy.com',
-    path: '/v1/gifs/random',
+    randomGIFPath: '/v1/gifs/random',
     apiKey: process.env.GIPHY_KEY || '',
 }
 
 const mailjetConfig: MailjetConfig = {
-    url: 'https://api.mailjet.com/v3.1/send',
+    baseURL: 'https://api.mailjet.com',
+    sendEmailPath: '/v3.1/send',
     email: process.env.MAILJET_EMAIL || '',
     name: process.env.MAILJET_NAME || 'GIF Bot',
     user: process.env.MAILJET_USER || '',

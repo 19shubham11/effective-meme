@@ -21,14 +21,14 @@ describe('GIPHY', () => {
                 },
             }
 
-            nock(config.gif.baseURL).persist().get(config.gif.path).query(true).reply(200, mockResp)
+            nock(config.gif.baseURL).persist().get(config.gif.randomGIFPath).query(true).reply(200, mockResp)
 
             const url = await gif.getRandomGIF('fun')
             assert.strictEqual(url, mockURL)
         })
 
         it('Should throw an error when GIPHY does not return 200', async () => {
-            nock(config.gif.baseURL).persist().get(config.gif.path).query(true).reply(400)
+            nock(config.gif.baseURL).persist().get(config.gif.randomGIFPath).query(true).reply(400)
 
             await assert.rejects(gif.getRandomGIF('fun'), (err) => {
                 assert.match(err.message, /Giphy Error/)

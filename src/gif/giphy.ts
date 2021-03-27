@@ -10,7 +10,7 @@ async function getRandomGIF(tag: string): Promise<string> {
     })
 
     try {
-        const resp = await GET(`${config.gif.baseURL}${config.gif.path}`, query)
+        const resp = await GET(`${config.gif.baseURL}${config.gif.randomGIFPath}`, query)
         const giphyRes = resp.body as GIPHYResponse
         return giphyRes.data.image_original_url
     } catch (err) {
