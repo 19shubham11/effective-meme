@@ -4,7 +4,7 @@ import { MailjetEmailBody, MailjetRequest } from './model'
 import { v4 as uuid } from 'uuid'
 import { POST } from '../helpers/httpHelper'
 
-async function sendEmail(gifURL: string): Promise<'OK'> {
+async function sendEmail(gifURL: string) {
     const auth = `Basic ${Buffer.from(config.email.user + ':' + config.email.key).toString('base64')}`
     const headers = {
         Authorization: auth,
@@ -12,8 +12,7 @@ async function sendEmail(gifURL: string): Promise<'OK'> {
     }
     const emailBody = getGIFEmailBody(gifURL)
     try {
-        await POST(config.email.url, emailBody, headers)
-        return 'OK'
+        await POST(`${config.email.baseURL}${config.email.sendEmailPath}`, emailBody, headers)
     } catch (err) {
         throw new Error('Mailjet Error!')
     }
@@ -32,7 +31,7 @@ function getGIFEmailBody(gifURL: string): MailjetRequest {
                 },
             ],
             Subject: 'Have a great day today!',
-            HTMLPart: `<img src='${gifURL}' width=500/>`,
+            HTMLPart: `<img src='${gifURL}'/>`,
             CustomId: uuid(),
         }
         return req
