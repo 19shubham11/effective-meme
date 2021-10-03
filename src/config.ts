@@ -33,9 +33,7 @@ const mailjetConfig: MailjetConfig = {
     key: process.env.MAILJET_KEY || '',
 }
 
-const config: AppConfig = {
+export const config: AppConfig = {
     gif: giphyConfig,
     email: mailjetConfig,
 }
-
-export default config

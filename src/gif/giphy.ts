@@ -1,8 +1,8 @@
 import { GET } from '../helpers/httpHelper'
 import { GIPHYResponse } from './model'
-import config from '../config'
+import { config } from '../config'
 
-async function getRandomGIF(tag: string): Promise<string> {
+export async function getRandomGIF(tag: string): Promise<string> {
     const query = new URLSearchParams({
         api_key: config.gif.apiKey,
         rating: 'pg',
@@ -11,11 +11,10 @@ async function getRandomGIF(tag: string): Promise<string> {
 
     try {
         const resp = await GET(`${config.gif.baseURL}${config.gif.randomGIFPath}`, query)
-        const giphyRes = resp.body as GIPHYResponse
-        return giphyRes.data.image_original_url
+        const giphyResp = resp.body as GIPHYResponse
+
+        return giphyResp?.data?.image_original_url
     } catch (err) {
         throw new Error('Giphy Error!')
     }
 }
-
-export { getRandomGIF }

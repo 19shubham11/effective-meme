@@ -1,7 +1,7 @@
 import assert from 'assert'
 import nock from 'nock'
-import config from '../../src/config'
 
+import { config } from '../../src/config'
 import * as email from '../../src/emails/mailjet'
 
 describe('Mailjet', () => {
@@ -17,8 +17,8 @@ describe('Mailjet', () => {
         it('Should trow an error if mailjet does not return 200', async () => {
             nock(config.email.baseURL).persist().post(config.email.sendEmailPath).reply(400)
 
-            await assert.rejects(email.sendEmail('https://mock-url'), (err) => {
-                assert.match(err.message, /Mailjet Error/)
+            await assert.rejects(email.sendEmail('https://mock-url'), (err: Error) => {
+                assert.match(err.message, /mailjet error/)
                 return true
             })
         })

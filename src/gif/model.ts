@@ -1,4 +1,4 @@
-interface GIPHYResponse {
+export interface GIPHYResponse {
     data: GIPHYData
 }
 
@@ -8,5 +8,3 @@ interface GIPHYData {
     image_original_url: string
     title: string
 }
-
-export { GIPHYResponse }

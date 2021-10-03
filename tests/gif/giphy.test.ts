@@ -1,7 +1,7 @@
 import assert from 'assert'
 import nock from 'nock'
-import config from '../../src/config'
 
+import { config } from '../../src/config'
 import * as gif from '../../src/gif/giphy'
 import { GIPHYResponse } from '../../src/gif/model'
 
@@ -30,7 +30,7 @@ describe('GIPHY', () => {
         it('Should throw an error when GIPHY does not return 200', async () => {
             nock(config.gif.baseURL).persist().get(config.gif.randomGIFPath).query(true).reply(400)
 
-            await assert.rejects(gif.getRandomGIF('fun'), (err) => {
+            await assert.rejects(gif.getRandomGIF('fun'), (err: Error) => {
                 assert.match(err.message, /Giphy Error/)
                 return true
             })
