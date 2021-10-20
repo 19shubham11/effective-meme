@@ -1,20 +1,28 @@
 import { GET } from '../helpers/httpHelper'
 import { GIPHYResponse } from './model'
-import { config } from '../config'
+import { Config } from '../config'
 
-export async function getRandomGIF(tag: string): Promise<string> {
-    const query = new URLSearchParams({
-        api_key: config.gif.apiKey,
-        rating: 'pg',
-        tag,
-    })
+export interface API {
+    getRandomGIF(tag: string): Promise<string>
+}
 
-    try {
-        const resp = await GET(`${config.gif.baseURL}${config.gif.randomGIFPath}`, query)
-        const giphyResp = resp.body as GIPHYResponse
+export function initAPI(config: Config): API {
+    async function getRandomGIF(tag: string): Promise<string> {
+        const query = new URLSearchParams({
+            api_key: config.gif?.apiKey,
+            rating: 'pg',
+            tag,
+        })
 
-        return giphyResp?.data?.image_original_url
-    } catch (err) {
-        throw new Error('Giphy Error!')
+        try {
+            const resp = await GET(`${config.gif.baseURL}${config.gif.randomGIFPath}`, query)
+            const giphyResp = resp.body as GIPHYResponse
+
+            return giphyResp?.data?.image_original_url
+        } catch (err) {
+            throw new Error('Giphy Error!')
+        }
     }
+
+    return { getRandomGIF }
 }

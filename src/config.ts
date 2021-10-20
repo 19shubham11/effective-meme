@@ -13,11 +13,6 @@ interface MailjetConfig {
     key: string
 }
 
-interface AppConfig {
-    gif: GiphyConfig
-    email: MailjetConfig
-}
-
 const giphyConfig: GiphyConfig = {
     baseURL: 'https://api.giphy.com',
     randomGIFPath: '/v1/gifs/random',
@@ -33,7 +28,12 @@ const mailjetConfig: MailjetConfig = {
     key: process.env.MAILJET_KEY || '',
 }
 
-export const config: AppConfig = {
+export interface Config {
+    gif: GiphyConfig
+    email: MailjetConfig
+}
+
+export const config: Config = {
     gif: giphyConfig,
     email: mailjetConfig,
 }
