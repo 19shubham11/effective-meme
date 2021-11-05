@@ -5,6 +5,10 @@ export interface GIPHYResponse {
 interface GIPHYData {
     type: string
     id: string
-    image_original_url: string
     title: string
+    images: {
+        original: {
+            url: string
+        }
+    }
 }

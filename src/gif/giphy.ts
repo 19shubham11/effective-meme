@@ -18,7 +18,7 @@ export function initAPI(config: Config): API {
             const resp = await GET(`${config.gif.baseURL}${config.gif.randomGIFPath}`, query)
             const giphyResp = resp.body as GIPHYResponse
 
-            return giphyResp?.data?.image_original_url
+            return giphyResp?.data?.images?.original?.url
         } catch (err) {
             throw new Error('Giphy Error!')
         }
