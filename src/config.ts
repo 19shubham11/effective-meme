@@ -1,16 +1,21 @@
-interface GiphyConfig {
+export interface GiphyConfig {
     baseURL: string
     randomGIFPath: string
     apiKey: string
 }
 
-interface MailjetConfig {
+export interface MailjetConfig {
     baseURL: string
     sendEmailPath: string
-    email: string
-    name: string
-    user: string
-    key: string
+    senderEmail: string
+    senderName: string
+    mailjetUser: string
+    apiKey: string
+}
+
+export interface Config {
+    gif: GiphyConfig
+    email: MailjetConfig
 }
 
 const giphyConfig: GiphyConfig = {
@@ -22,15 +27,10 @@ const giphyConfig: GiphyConfig = {
 const mailjetConfig: MailjetConfig = {
     baseURL: 'https://api.mailjet.com',
     sendEmailPath: '/v3.1/send',
-    email: process.env.MAILJET_EMAIL || '',
-    name: process.env.MAILJET_NAME || 'GIF Bot',
-    user: process.env.MAILJET_USER || '',
-    key: process.env.MAILJET_KEY || '',
-}
-
-export interface Config {
-    gif: GiphyConfig
-    email: MailjetConfig
+    senderEmail: process.env.MAILJET_EMAIL || '',
+    senderName: process.env.MAILJET_NAME || 'GIF Bot',
+    mailjetUser: process.env.MAILJET_USER || '',
+    apiKey: process.env.MAILJET_KEY || '',
 }
 
 export const config: Config = {

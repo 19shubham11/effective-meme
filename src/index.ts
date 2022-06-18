@@ -2,8 +2,8 @@ import * as email from './emails/mailjet'
 import * as gif from './gif/giphy'
 import { config } from './config'
 
-const giphyAPI = gif.initAPI(config)
-const mailjetAPI = email.initAPI(config)
+const giphyAPI = gif.initAPI(config.gif)
+const mailjetAPI = email.initAPI(config.email)
 
 async function main() {
     try {

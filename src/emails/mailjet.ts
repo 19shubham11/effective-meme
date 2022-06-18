@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid'
 
 import addresses from './addresses.json'
-import { Config } from '../config'
+import { MailjetConfig } from '../config'
 import { MailjetEmailBody, MailjetRequest } from './model'
 import { POST } from '../helpers/httpHelper'
 
@@ -9,20 +9,20 @@ export interface API {
     sendEmail(gifURL: string): Promise<void>
 }
 
-export function initAPI(config: Config): API {
-    const mailjetEmail = config.email.email
+export function initAPI(config: MailjetConfig): API {
+    const senderEmail = config?.senderEmail
 
     async function sendEmail(gifURL: string) {
-        const auth = `Basic ${Buffer.from(config.email?.user + ':' + config.email?.key).toString('base64')}`
+        const auth = `Basic ${Buffer.from(config?.mailjetUser + ':' + config?.apiKey).toString('base64')}`
         const headers = {
             Authorization: auth,
             'Content-Type': 'application/json',
         }
 
-        const emailBody = getGIFEmailBody(gifURL, mailjetEmail)
+        const emailBody = getGIFEmailBody(gifURL, senderEmail)
 
         try {
-            await POST(`${config.email?.baseURL}${config.email?.sendEmailPath}`, emailBody, headers)
+            await POST(`${config?.baseURL}${config?.sendEmailPath}`, emailBody, headers)
         } catch (err) {
             throw new Error('mailjet error: could not send email')
         }
@@ -31,11 +31,11 @@ export function initAPI(config: Config): API {
     return { sendEmail }
 }
 
-function getGIFEmailBody(gifURL: string, email: string): MailjetRequest {
+function getGIFEmailBody(gifURL: string, senderEmail: string): MailjetRequest {
     const messages = addresses.emails.map((mail) => {
         const req: MailjetEmailBody = {
             From: {
-                Email: email,
+                Email: senderEmail,
                 Name: 'GIF Of The Day',
             },
             To: [
