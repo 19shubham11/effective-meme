@@ -16,6 +16,7 @@ export interface MailjetConfig {
 export interface Config {
     gif: GiphyConfig
     email: MailjetConfig
+    apiKey: string
 }
 
 const giphyConfig: GiphyConfig = {
@@ -36,4 +37,5 @@ const mailjetConfig: MailjetConfig = {
 export const config: Config = {
     gif: giphyConfig,
     email: mailjetConfig,
+    apiKey: process.env.API_KEY || '',
 }

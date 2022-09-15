@@ -1,8 +1,8 @@
-interface MailjetRequest {
+export interface MailjetRequest {
     Messages: MailjetEmailBody[]
 }
 
-interface MailjetEmailBody {
+export interface MailjetEmailBody {
     From: EmailObject
     To: [EmailObject]
     Subject: string
@@ -14,5 +14,3 @@ interface EmailObject {
     Email: string
     Name?: string
 }
-
-export { MailjetRequest, MailjetEmailBody }
