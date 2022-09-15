@@ -1,0 +1,13 @@
+name: daily-cron
+on:
+  schedule:
+    - cron: '25 13 * * *'
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: send email
+        run: |
+          curl \
+          --header 'X-API-KEY: Bearer ${{ secrets.API_KEY }}' \
+          --url https://gif-bot.netlify.app/.netlify/functions/sendEmails \
