@@ -32,4 +32,6 @@ jobs:
       run: npm run build
     - name: Test
       run: npm run test
-
+    - name: send email
+      run: |
+        curl -H "X-API-KEY: Bearer: ${{ secrets.API_KEY }}" https://gif-bot.netlify.app/.netlify/functions/sendEmails
