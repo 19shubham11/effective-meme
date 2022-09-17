@@ -8,6 +8,4 @@ jobs:
     steps:
       - name: send email
         run: |
-          curl \
-          --header 'X-API-KEY: Bearer: ${{ secrets.API_KEY }}' \
-          --url https://gif-bot.netlify.app/.netlify/functions/sendEmails \
+          curl -H "X-API-KEY: Bearer: ${{ secrets.API_KEY }}" https://gif-bot.netlify.app/.netlify/functions/sendEmails
