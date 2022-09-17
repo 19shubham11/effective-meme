@@ -1,7 +1,9 @@
 # gif-email-bot :robot: 
 [![Node.js CI](https://github.com/19shubham11/effective-meme/actions/workflows/actions.yml/badge.svg?branch=main)](https://github.com/19shubham11/effective-meme/actions/workflows/actions.yml)
 
-This is a fun app written in TypeScript that sends a random gif to a given email address! I have deployed this on Heroku with a scheduler and the first email I get every morning is a fun gif!
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9b0bc138-873a-48a3-99e0-b963ec416461/deploy-status)](https://app.netlify.com/sites/gif-bot/deploys)
+
+This is a fun app written in TypeScript that sends a random gif to a given email address! I have deployed this on Netlify and the first email I get every morning is a fun gif!
 
 ![Alt text](https://media.giphy.com/media/26tPplGWjN0xLybiU/giphy.gif)
 
